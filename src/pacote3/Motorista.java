@@ -1,6 +1,6 @@
 package pacote3;
 
-public class Motorista {
+public class Motorista implements Acelerador, Autenticavel {
     private String nome;
     private int matricula;
     private Carro veiculoAtual;
@@ -10,8 +10,17 @@ public class Motorista {
         this.matricula = matricula;
     }
 
-    public void acelerar(int limite) {
+    @Override
+    public int acelerar() {
+        this.veiculoAtual.acelerar();
+        return this.veiculoAtual.getVelocidadeAtual();
+    }
+
+    @Override
+    public int acelerar(int limite) {
         this.veiculoAtual.acelerar(limite);
+
+        return this.veiculoAtual.getVelocidadeAtual();
     }
 
     public String getNome() {
@@ -32,5 +41,11 @@ public class Motorista {
 
     public void setVeiculoAtual(Carro veiculoAtual) {
         this.veiculoAtual = veiculoAtual;
+    }
+
+    @Override
+    public String obterCredenciais() {
+        
+        return String.format("%s-%d", getNome(), getMatricula());
     }
 }
