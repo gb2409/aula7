@@ -1,6 +1,6 @@
 package pacote3;
 
-public class Motorista implements Acelerador, Autenticavel {
+public class Motorista extends Pessoa implements Acelerador, Autenticavel {
     private String nome;
     private int matricula;
     private Carro veiculoAtual;
@@ -8,6 +8,11 @@ public class Motorista implements Acelerador, Autenticavel {
     public Motorista(String nome, int matricula) {
         this.nome = nome;
         this.matricula = matricula;
+    }
+
+    public Motorista(String nome, String cpf){
+        setNome(nome);
+        setCpf(cpf);
     }
 
     @Override

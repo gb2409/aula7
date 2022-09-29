@@ -1,11 +1,15 @@
 package pacote2;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 
 import pacote3.Acelerador;
 import pacote3.Autenticador;
 import pacote3.Carro;
 import pacote3.Motorista;
+import pacote3.Passageiro;
+import pacote3.Pessoa;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -51,35 +55,60 @@ public class App {
         //    System.out.printf(" - Velocidade atual: %d\n", a.acelerar());
        // }
 
-            Autenticador aut = new Autenticador();
+            // Autenticador aut = new Autenticador();
 
-            Motorista mot = new Motorista("João", 12345);
+            // Motorista mot = new Motorista("João", 12345);
 
-            if (aut.autenticar(mot)){
+            // if (aut.autenticar(mot)){
 
-                System.out.println("Acesso autorizado");
+            //     System.out.println("Acesso autorizado");
 
-            }
+            // }
 
-            else{
+            // else{
 
-                System.out.println("Acesso não autorizado");
+            //     System.out.println("Acesso não autorizado");
 
-            }
+            // }
 
-            Carro car = new Carro("ABC1234", 565656, new Motorista("Maria", 1209));
+            // Carro car = new Carro("ABC1234", 565656, new Motorista("Maria", 1209));
 
-            if (aut.autenticar(car)){
+            // if (aut.autenticar(car)){
 
-                System.out.println("Acesso autorizado");
+            //     System.out.println("Acesso autorizado");
                 
-            }
+            // }
 
-            else {
+            // else {
 
-                System.out.println("Acesso não autorizado");
+            //     System.out.println("Acesso não autorizado");
 
-            }
+            // }
+
+            List <Pessoa> pessoas = new ArrayList<>();
+                pessoas.add(new Passageiro("Passageiro 1" , "1234567890"));
+                pessoas.add(new Passageiro("Passageiro 2" , "9876543210"));
+                pessoas.add(new Motorista("Motorista 1"  , "8976543210"));
             
+                System.out.println("Total de pessoas: " + pessoas.size());
+
+                if (pessoas.contains(new Motorista("Motorista 2" , "3456789012"))){
+                    System.out.println("Ja existe pessoa com este cpf!!");
+                }
+
+                else {
+                    System.out.println("Pessoa não localizada!!");
+                }
+
+                Pessoa p = pessoas.remove(1);
+                System.out.printf("A pessoa %s foi removida! A lista agora possui %d pessoas. \n"
+                  ,  p.getNome(),pessoas.size());
+
+                  System.out.println("Pessoas da lista: ");
+                  for(Pessoa pes : pessoas ){
+                    System.out.printf("Nome: %s - Cpf: %s - Tipo: %s \n" 
+                    , pes.getNome() , pes.getCpf() , pes.getClass().getSimpleName());
+                  }
+
     }
 }   
